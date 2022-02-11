@@ -1,0 +1,76 @@
+syntax="proto3";
+import "google/protobuf/empty.proto";
+option go_package=".;proto";
+
+service User {
+  rpc GetUserList(PageInfo) returns (UserListResponse);
+  rpc GetUserByMobile(MobileRequest) returns (UserInfoResponse);
+  rpc GetUserById(IdRequest) returns (UserInfoResponse);
+  rpc CreateUser(CreateUserInfo) returns (UserInfoResponse);
+  rpc UpdateUser(UpdateUserInfo) returns (google.protobuf.Empty);
+  rpc CheckPassword(PasswordCheckInfo) returns (CheckResponse);
+}
+
+
+message IdRequest {
+  uint64 id = 1;
+}
+
+message UpdateUserInfo {
+  uint64 id = 1;
+  string nickName = 2;
+  string realName = 3;
+  string email = 4;
+  string loginPassword = 5;
+  string payPassword = 6;
+  string mobile = 7;
+  string sex = 8;
+  int64 birthday = 9;
+  string pic = 10;
+  int32 status = 11;
+  int64 lastLoginAt = 12;
+  string lastLoginIP = 13;
+  string memo = 14;
+  int32 score = 15;
+}
+
+message PageInfo {
+  uint32 pageNum = 1;
+  uint32 pageSize = 2;
+}
+
+message MobileRequest {
+  string mobile = 1;
+}
+
+message UserInfoResponse {
+  int32 id = 1;
+  string nickName = 2;
+  string mobile = 3;
+  string password = 4;
+  int64 birthday = 5;
+  string gender = 6;
+  uint32 role = 7;
+}
+
+message UserListResponse {
+  uint32 total = 1;
+  repeated UserInfoResponse data = 2;
+}
+
+message CreateUserInfo {
+  string nickName = 1;
+  string mobile = 2;
+  string password = 3;
+  uint32 birthday = 4;
+}
+
+message CheckResponse {
+  bool success = 1;
+}
+
+message PasswordCheckInfo {
+  string password = 1;
+  string encryptedPassword = 2;
+}
+

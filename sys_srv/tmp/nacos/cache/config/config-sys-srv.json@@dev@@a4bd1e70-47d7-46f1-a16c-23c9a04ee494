@@ -1,0 +1,19 @@
+{
+  "name": "go-shopping-sys-srv",
+  "host": "192.168.42.69",
+  "port": 8088,
+  "lang": "zh",
+  "tags": ["ryan", "sys_srv"],
+  "mysql": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "db": "go_shopping_sys_srv",
+    "user": "ryan",
+    "password": "123"
+  },
+  "consul": {
+    "host": "192.168.42.69",
+    "port": 8500
+  },
+  "pass_encrypt": "go_shopping"
+}
